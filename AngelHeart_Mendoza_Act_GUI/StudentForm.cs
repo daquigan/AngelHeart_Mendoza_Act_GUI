@@ -30,7 +30,14 @@ namespace AngelHeart_Mendoza_Act_GUI
 
         private void AddImageBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add Image functionality is not implemented.", "Feature Not Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            StudentPictureBox.Image = Image.FromFile(openFileDialog.FileName);
         }
 
         private void ChangeImageBtn_Click(object sender, EventArgs e)
